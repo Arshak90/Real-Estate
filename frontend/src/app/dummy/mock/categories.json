@@ -1,0 +1,28 @@
+{
+  "houseType": [
+    {
+      "id": 1,
+      "name": "Houses"
+    },
+    {
+      "id": 2,
+      "name": "Apartments"
+    },
+    {
+      "id": 3,
+      "name": "Condos/co-ops"
+    },
+    {
+      "id": 4,
+      "name": "Townhomes"
+    },
+    {
+      "id": 5,
+      "name": "Manufactured"
+    },
+    {
+      "id": 6,
+      "name": "Lots/Land"
+    }
+  ]
+}
