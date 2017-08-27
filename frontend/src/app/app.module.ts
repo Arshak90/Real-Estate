@@ -7,6 +7,8 @@ import { MapComponent } from './map/map.component';
 import { ResultComponent } from './result/result.component';
 import { ListComponent } from './result/list/list.component';
 import { FooterComponent } from './result/footer/footer.component';
+import {HttpModule} from "@angular/http";
+import {MapService} from "./service/map.service";
 
 @NgModule({
   declarations: [
@@ -18,9 +20,10 @@ import { FooterComponent } from './result/footer/footer.component';
     FooterComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpModule
   ],
-  providers: [],
+  providers: [MapService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
