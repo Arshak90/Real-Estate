@@ -78,7 +78,7 @@ export class MapComponent implements AfterViewInit {
     that.map = new google.maps.Map(document.getElementById('map_canvas'),mapOptions);
     google.maps.event.addDomListener(that.map.getDiv(),'mousedown',function(e){
       console.log(e);
-      if (e.target.id === 'drawId' || !!e.handled === false){
+      if (e.target.id === 'drawId' || !!e.handled === false || e.button!=0){
         return ;
       }
 
