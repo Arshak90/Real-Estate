@@ -50,12 +50,16 @@ export class MapComponent implements AfterViewInit {
       controlDiv.appendChild(controlUI);
 
       controlUI.addEventListener('click', function() {
+        debugger;
         if(that.statusMap){
-          debugger;
-          return;
+          that.map.setOptions({draggable: true});
+          controlUI.style.boxShadow = '0 2px 6px rgba(0,0,0,.3)';
+        }else {
+          that.map.setOptions({draggable: false});
+          controlUI.style.boxShadow = '0 5px 10px rgba(0,0,0,1.0)';
+
         }
-        that.map.setOptions({draggable: false});
-        that.statusMap = true;
+        that.statusMap = !that.statusMap;
       });
 
     }
@@ -65,18 +69,20 @@ export class MapComponent implements AfterViewInit {
       center: new google.maps.LatLng(52.5498783, 13.425209099999961),
       mapTypeId: google.maps.MapTypeId.ROADMAP,
       mapTypeControl: false,
+      streetViewControl: false,
       zoomControlOptions: {
         style: google.maps.ZoomControlStyle.LARGE
       }
     };
 
     that.map = new google.maps.Map(document.getElementById('map_canvas'),mapOptions);
-
     google.maps.event.addDomListener(that.map.getDiv(),'mousedown',function(e){
-      //do it with the right mouse-button only
-      if(e.button!=0 || !that.statusMap){
-        return;
+      console.log(e);
+      if (e.target.id === 'drawId' || !!e.handled === false){
+        return ;
       }
+
+      //do it with the right mouse-button only
       let poly=new google.maps.Polyline({map:that.map,clickable:false});
       var move=google.maps.event.addListener(that.map,'mousemove',function(e){
         poly.getPath().push(e.latLng);
